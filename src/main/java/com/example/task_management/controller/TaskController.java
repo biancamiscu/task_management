@@ -38,13 +38,13 @@ public class TaskController {
     }
 
     //Endpoint pentru obtinerea unui task specific dupa id
-    @GetMapping
+    @GetMapping("/{id}")
     public Task getTaskById(@PathVariable Long id){
         return taskService.getTaskById(id);
     }
 
     //Endpoint pentru filtrarea task-urilor in functie de responsabil si data
-    @GetMapping
+    @GetMapping("/filter")
     public List<Task> getTasksByFilter(@RequestParam(required = false)String responsible,
                                        @RequestParam(required = false) String dueDate){
         return taskService.getTasksByFilter(responsible,dueDate);

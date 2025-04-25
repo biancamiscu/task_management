@@ -58,7 +58,7 @@ public class TaskService {
             return taskRepository.findByResponsible(responsible);
         }
         else if(dueDate!=null){
-            return taskRepository.findDueDate(LocalDate.parse(dueDate));
+            return taskRepository.findByDueDate(LocalDate.parse(dueDate));
         }
         else {
             return  taskRepository.findAll();

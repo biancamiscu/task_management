@@ -15,5 +15,5 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     public List<Task> findByResponsible(String responsible);
 
     //Metoda pentru a gasi task-urile care au o anumita data de finalizare
-    public List<Task> findDueDate(LocalDate dueDate);
+    public List<Task> findByDueDate(LocalDate dueDate);
 }
