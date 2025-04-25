@@ -14,6 +14,7 @@ public class SubtaskController {
     @Autowired
     private SubtaskService subtaskService;
 
+    //Endpoint pentru adaugarea unui subtask pentru un task
     @PostMapping
     public Subtask createSubtask(@RequestBody Subtask subtask){
         return subtaskService.addSubtask(subtask);

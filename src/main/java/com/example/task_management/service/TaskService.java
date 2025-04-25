@@ -14,14 +14,17 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
+    //Metoda pentru adaugarea unui task
     public Task addTask(Task task){
         return taskRepository.save(task);
     }
 
+    //Metoda pentru obtinerea tuturor task-urilor
     public List<Task> getAllTasks(){
         return taskRepository.findAll();
     }
 
+    //Metoda pentru actualizarea unui task existent
     public Task updateTask(Long id, Task task){
         if(taskRepository.existsById(id)){
             task.setId(id);
@@ -31,6 +34,7 @@ public class TaskService {
         }
     }
 
+    //Metoda pentru stergerea unui task existent
     public void deleteTask(Long id){
         if(taskRepository.existsById(id)){
             taskRepository.deleteById(id);
@@ -40,10 +44,12 @@ public class TaskService {
         }
     }
 
+    //Metoda pentru obtinerea unui task dupa id
     public Task getTaskById(Long id){
         return taskRepository.findById(id).orElseThrow(()-> new RuntimeException("Task not found"));
     }
 
+    //Metoda pentru filtrarea unui task dupa resonsabil si data de finalizare
     public List<Task> getTasksByFilter(String responsible, String dueDate){
         if(responsible!= null && dueDate!=null){
             return taskRepository.findByResponsibleAndDueDate(responsible, LocalDate.parse(dueDate));

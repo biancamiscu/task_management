@@ -10,6 +10,7 @@ public class SubtaskService {
     @Autowired
     private SubtaskRepository subtaskRepository;
 
+    //Metoda pentru adaugarea unui subtask
     public Subtask addSubtask(Subtask subtask) {
         return subtaskRepository.save(subtask);
     }

@@ -13,11 +13,13 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
+    //Endpoint pentru adaugarea unui comentariu la un task
     @PostMapping
     public Comment createComment(@RequestBody Comment comment){
         return commentService.addComment(comment);
     }
 
+    //Endpoint pentru obtinerea comentariilor unui task dupa id
     @GetMapping("/tasks/{taskId}")
     public List<Comment> getCommentsForTask(@PathVariable Long taskId){
         return commentService.getCommentForTask(taskId);
