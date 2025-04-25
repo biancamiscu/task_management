@@ -22,4 +22,24 @@ public class TaskController {
     public List<Task> getTasks(){
         return taskService.getAllTasks();
     }
+
+    @PutMapping("/{id}")
+    public Task updateTask(@PathVariable Long id, @RequestBody Task task){
+        return taskService.updateTask(id, task);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTask(@PathVariable Long id){
+        taskService.deleteTask(id);
+    }
+    @GetMapping
+    public Task getTaskById(@PathVariable Long id){
+        return taskService.getTaskById(id);
+    }
+
+    @GetMapping
+    public List<Task> getTasksByFilter(@RequestParam(required = false)String responsible,
+                                       @RequestParam(required = false) String dueDate){
+        return taskService.getTasksByFilter(responsible,dueDate);
+    }
 }

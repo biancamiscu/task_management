@@ -5,6 +5,8 @@ import com.example.task_management.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CommentService {
     @Autowired
@@ -12,6 +14,10 @@ public class CommentService {
 
     public Comment addComment(Comment comment){
         return commentRepository.save(comment);
+    }
+
+    public List<Comment> getCommentForTask(Long taskId){
+        return commentRepository.findByTaskId(taskId);
     }
 
 }
