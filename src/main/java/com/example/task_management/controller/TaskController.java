@@ -1,5 +1,6 @@
 package com.example.task_management.controller;
 
+import com.example.task_management.model.TaskStatus;
 import com.example.task_management.model.Task;
 import com.example.task_management.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,11 @@ public class TaskController {
     public List<Task> getTasksByFilter(@RequestParam(required = false)String responsible,
                                        @RequestParam(required = false) String dueDate){
         return taskService.getTasksByFilter(responsible,dueDate);
+    }
+
+    //Endpoint pentru actualizarea statusului unui task
+    @PutMapping("/{id}/status")
+    public Task updateTaskStatus(@PathVariable Long id, @RequestParam TaskStatus status){
+        return taskService.updateTaskStatus(id, status);
     }
 }

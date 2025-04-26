@@ -1,10 +1,10 @@
 package com.example.task_management.service;
 
+import com.example.task_management.model.TaskStatus;
 import com.example.task_management.model.Task;
 import com.example.task_management.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -63,5 +63,15 @@ public class TaskService {
         else {
             return  taskRepository.findAll();
         }
+    }
+
+    //Metoda pentru actualizarea statusului unui task
+    public Task updateTaskStatus(Long id, TaskStatus status){
+        Task task= taskRepository.findById(id).orElse(null);
+        if(task!=null){
+            task.setStatus(status);
+            return taskRepository.save(task);
+        }
+        return null;
     }
 }

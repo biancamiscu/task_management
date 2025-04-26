@@ -1,9 +1,6 @@
 package com.example.task_management.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -16,6 +13,9 @@ public class Task {
     private String description;
     private LocalDate dueDate;
     private String responsible;
+
+    @Enumerated(EnumType.STRING)
+    private TaskStatus status;
 
     public Long getId() {
         return id;
@@ -55,5 +55,13 @@ public class Task {
 
     public void setResponsible(String responsible) {
         this.responsible = responsible;
+    }
+
+    public TaskStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(TaskStatus status) {
+        this.status = status;
     }
 }
